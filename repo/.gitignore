@@ -1,0 +1,12 @@
+# binarios e objetos
+*.o
+*.obj
+*.exe
+*.out
+teste
+
+# arquivos de editor e sistema
+.vscode/
+.idea/
+*.swp
+.DS_Store
