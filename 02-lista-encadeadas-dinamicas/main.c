@@ -3,12 +3,12 @@
 #include <string.h>
 #include "ListaDinEncad.h"
 
-static struct tarefa mk(int codigo, const char *descricao) {
+static struct tarefa mk(int codigo, const char *descricao, int prioridade) {
     struct tarefa t;
     t.codigo = codigo;
     strncpy(t.descricao, descricao, sizeof(t.descricao) - 1);
     t.descricao[sizeof(t.descricao) - 1] = '\0';
-    t.prioridade = 0;
+    t.prioridade = prioridade;
     return t;
 }
 
@@ -29,17 +29,17 @@ int main(void) {
 
     printf("vazia=%d cheia=%d tamanho=%d\n", lista_vazia(li), lista_cheia(li), tamanho_lista(li));
 
-    insere_tarefa_final(li, mk(12, "Estudar"));
-    insere_tarefa_final(li, mk(23, "Comprar leite"));
-    insere_tarefa_final(li, mk(16, "Lavar roupa"));
+    insere_tarefa_final(li, mk(12, "Estudar", 3));
+    insere_tarefa_final(li, mk(23, "Comprar leite", 1));
+    insere_tarefa_final(li, mk(16, "Lavar roupa", 2));
     imprime("apos 3 insercoes", li);
 
-    insere_tarefa_inicio(li, mk(12, "Estudar"));
-    imprime("insere_inicio(12)", li);
+    insere_tarefa_inicio(li, mk(30, "Revisar", 3));
+    imprime("insere_inicio(30)", li);
 
     remove_tarefa_inicio(li);
-    insere_tarefa_final(li, mk(12, "Estudar"));
-    imprime("insere_final(12)", li);
+    insere_tarefa_final(li, mk(40, "Dormir", 4));
+    imprime("insere_final(40)", li);
 
     remove_tarefa_final(li);
     imprime("remove_final", li);
@@ -51,14 +51,12 @@ int main(void) {
     libera_lista(li);
 
     li = cria_lista();
-    insere_tarefa_ordenada(li, mk(23, "Comprar leite"));
-    insere_tarefa_ordenada(li, mk(16, "Lavar roupa"));
-    imprime("ordenada", li);
-    insere_tarefa_ordenada(li, mk(19, "Comprar"));
-    imprime("insere_ordenada(19)", li);
-    insere_tarefa_ordenada(li, mk(12, "Estudar"));
-    insere_tarefa_ordenada(li, mk(40, "Dormir"));
-    imprime("insere 12 e 40", li);
+    insere_tarefa_ordenada(li, mk(23, "Comprar leite", 3));
+    insere_tarefa_ordenada(li, mk(16, "Lavar roupa", 1));
+    insere_tarefa_ordenada(li, mk(19, "Comprar", 2));
+    insere_tarefa_ordenada(li, mk(12, "Estudar", 1));
+    insere_tarefa_ordenada(li, mk(40, "Dormir", 4));
+    imprime("ordenada por prioridade", li);
 
     if (busca_tarefa_pos(li, 3, &t))
         printf("busca_pos(3) -> codigo %d\n", t.codigo);
