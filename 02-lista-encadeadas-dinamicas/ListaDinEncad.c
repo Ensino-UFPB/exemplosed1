@@ -13,14 +13,13 @@
      convencao do repositorio.
    ============================================================ */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "ListaDinEncad.h"
 
 /* Cada elemento guarda os dados e o endereco do proximo elemento.
    O ultimo elemento aponta para NULL. */
 struct elemento {
-    struct aluno dados;
+    struct tarefa dados;
     struct elemento *prox;
 };
 typedef struct elemento Elem;
@@ -29,14 +28,14 @@ typedef struct elemento Elem;
    Criacao e destruicao
    ------------------------------------------------------------ */
 
-Lista* cria_lista(void) {
-    Lista* li = (Lista*) malloc(sizeof(Lista));
+ListaTarefas* cria_lista(void) {
+    ListaTarefas* li = (ListaTarefas*) malloc(sizeof(ListaTarefas));
     if (li != NULL)
         *li = NULL;               /* lista vazia: o inicio aponta para NULL */
     return li;
 }
 
-void libera_lista(Lista* li) {
+void libera_lista(ListaTarefas* li) {
     if (li != NULL) {
         Elem* no;
         while ((*li) != NULL) {
@@ -51,8 +50,7 @@ void libera_lista(Lista* li) {
 /* ------------------------------------------------------------
    Informacoes de estado
    ------------------------------------------------------------ */
-
-int tamanho_lista(Lista* li) {
+int tamanho_lista(ListaTarefas* li) {
     if (li == NULL)
         return -1;
     int cont = 0;
@@ -64,13 +62,13 @@ int tamanho_lista(Lista* li) {
     return cont;
 }
 
-int lista_cheia(Lista* li) {
+int lista_cheia(ListaTarefas* li) {
     if (li == NULL)
         return -1;
     return 0;                     /* so falta memoria quando o malloc falha */
 }
 
-int lista_vazia(Lista* li) {
+int lista_vazia(ListaTarefas* li) {
     if (li == NULL)
         return -1;
     if (*li == NULL)
@@ -81,22 +79,21 @@ int lista_vazia(Lista* li) {
 /* ------------------------------------------------------------
    Insercao
    ------------------------------------------------------------ */
-
-int insere_lista_inicio(Lista* li, struct aluno al) {
+int insere_tarefa_inicio(ListaTarefas* li, struct tarefa t) {
     if (li == NULL) return 0;
     Elem* no = (Elem*) malloc(sizeof(Elem));
     if (no == NULL) return 0;     /* falta de memoria: lista cheia */
-    no->dados = al;
+    no->dados = t;
     no->prox = (*li);             /* 1o: liga o novo no ao antigo primeiro */
     *li = no;                     /* 2o: so entao altera o inicio */
     return 1;
 }
 
-int insere_lista_final(Lista* li, struct aluno al) {
+int insere_tarefa_final(ListaTarefas* li, struct tarefa t) {
     if (li == NULL) return 0;
     Elem* no = (Elem*) malloc(sizeof(Elem));
     if (no == NULL) return 0;
-    no->dados = al;
+    no->dados = t;
     no->prox = NULL;              /* o novo no sera o ultimo */
     if ((*li) == NULL) {          /* lista vazia: insere no inicio */
         *li = no;
@@ -109,20 +106,20 @@ int insere_lista_final(Lista* li, struct aluno al) {
     return 1;
 }
 
-int insere_lista_ordenada(Lista* li, struct aluno al) {
+int insere_tarefa_ordenada(ListaTarefas* li, struct tarefa t) {
     if (li == NULL) return 0;
     Elem* no = (Elem*) malloc(sizeof(Elem));
     if (no == NULL) return 0;
-    no->dados = al;
+    no->dados = t;
     if ((*li) == NULL) {          /* lista vazia: insere no inicio */
         no->prox = NULL;
         *li = no;
         return 1;
     } else {
         Elem *ant = NULL, *atual = *li;
-        /* procura o primeiro elemento com matricula maior ou igual */
+        /* procura o primeiro elemento com prioridade maior ou igual */
         while (atual != NULL &&
-               atual->dados.matricula < al.matricula) {
+               atual->dados.prioridade < t.prioridade) {
             ant = atual;
             atual = atual->prox;
         }
@@ -141,7 +138,7 @@ int insere_lista_ordenada(Lista* li, struct aluno al) {
    Remocao
    ------------------------------------------------------------ */
 
-int remove_lista_inicio(Lista* li) {
+int remove_tarefa_inicio(ListaTarefas* li) {
     if (li == NULL) return 0;
     if ((*li) == NULL)            /* lista vazia */
         return 0;
@@ -151,7 +148,7 @@ int remove_lista_inicio(Lista* li) {
     return 1;
 }
 
-int remove_lista_final(Lista* li) {
+int remove_tarefa_final(ListaTarefas* li) {
     if (li == NULL) return 0;
     if ((*li) == NULL)            /* lista vazia */
         return 0;
@@ -168,12 +165,12 @@ int remove_lista_final(Lista* li) {
     return 1;
 }
 
-int remove_lista(Lista* li, int mat) {
+int remove_tarefa(ListaTarefas* li, int codigo) {
     if (li == NULL) return 0;
     if ((*li) == NULL)            /* lista vazia */
         return 0;
     Elem *ant = NULL, *no = *li;
-    while (no != NULL && no->dados.matricula != mat) {
+    while (no != NULL && no->dados.codigo != codigo) {
         ant = no;
         no = no->prox;
     }
@@ -191,7 +188,7 @@ int remove_lista(Lista* li, int mat) {
    Busca
    ------------------------------------------------------------ */
 
-int busca_lista_pos(Lista* li, int pos, struct aluno *al) {
+int busca_tarefa_pos(ListaTarefas* li, int pos, struct tarefa *t) {
     if (li == NULL || pos <= 0)
         return 0;
     Elem *no = *li;
@@ -203,21 +200,21 @@ int busca_lista_pos(Lista* li, int pos, struct aluno *al) {
     if (no == NULL)               /* posicao maior que o tamanho */
         return 0;
     else {
-        *al = no->dados;
+        *t = no->dados;
         return 1;
     }
 }
 
-int busca_lista_mat(Lista* li, int mat, struct aluno *al) {
+int busca_tarefa_cod(ListaTarefas* li, int codigo, struct tarefa *t) {
     if (li == NULL)
         return 0;
     Elem *no = *li;
-    while (no != NULL && no->dados.matricula != mat)
+    while (no != NULL && no->dados.codigo != codigo)
         no = no->prox;
     if (no == NULL)               /* elemento nao encontrado */
         return 0;
     else {
-        *al = no->dados;
+        *t = no->dados;
         return 1;
     }
 }

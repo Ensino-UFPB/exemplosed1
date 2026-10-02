@@ -3,68 +3,66 @@
 #include <string.h>
 #include "ListaDinEncad.h"
 
-static struct aluno mk(int matricula, const char *nome) {
-    struct aluno al;
-    al.matricula = matricula;
-    strncpy(al.nome, nome, sizeof(al.nome) - 1);
-    al.nome[sizeof(al.nome) - 1] = '\0';
-    al.n1 = al.n2 = al.n3 = 0.0f;
-    return al;
+static struct tarefa mk(int codigo, const char *descricao, int prioridade) {
+    struct tarefa t;
+    t.codigo = codigo;
+    strncpy(t.descricao, descricao, sizeof(t.descricao) - 1);
+    t.descricao[sizeof(t.descricao) - 1] = '\0';
+    t.prioridade = prioridade;
+    return t;
 }
 
-static void imprime(const char *rotulo, Lista *li) {
+static void imprime(const char *rotulo, ListaTarefas *li) {
     int i, n = tamanho_lista(li);
-    struct aluno al;
+    struct tarefa t;
     printf("%-22s tam=%d: inicio ->", rotulo, n);
     for (i = 1; i <= n; i++) {
-        busca_lista_pos(li, i, &al);
-        printf(" %d ->", al.matricula);
+        busca_tarefa_pos(li, i, &t);
+        printf(" (%d, %s, %d) ->", t.codigo, t.descricao, t.prioridade);
     }
     printf(" NULL\n");
 }
 
 int main(void) {
-    Lista *li = cria_lista();
-    struct aluno al;
+    ListaTarefas *li = cria_lista();
+    struct tarefa t;
 
     printf("vazia=%d cheia=%d tamanho=%d\n", lista_vazia(li), lista_cheia(li), tamanho_lista(li));
 
-    insere_lista_final(li, mk(33, "Ana"));
-    insere_lista_final(li, mk(23, "Bruno"));
-    insere_lista_final(li, mk(16, "Carla"));
+    insere_tarefa_final(li, mk(12, "Estudar", 3));
+    insere_tarefa_final(li, mk(23, "Comprar leite", 1));
+    insere_tarefa_final(li, mk(16, "Lavar roupa", 2));
     imprime("apos 3 insercoes", li);
 
-    insere_lista_inicio(li, mk(12, "Diego"));        /* trace B */
-    imprime("insere_inicio(12)", li);
+    insere_tarefa_inicio(li, mk(30, "Revisar", 3));
+    imprime("insere_inicio(30)", li);
 
-    remove_lista_inicio(li);
-    insere_lista_final(li, mk(12, "Diego"));         /* trace C */
-    imprime("insere_final(12)", li);
+    remove_tarefa_inicio(li);
+    insere_tarefa_final(li, mk(40, "Dormir", 4));
+    imprime("insere_final(40)", li);
 
-    remove_lista_final(li);
+    remove_tarefa_final(li);
     imprime("remove_final", li);
 
-    remove_lista(li, 23);                            /* trace E */
-    imprime("remove_lista(23)", li);
-    printf("remove_lista(99)=%d\n", remove_lista(li, 99));
+    remove_tarefa(li, 23);
+    imprime("remove_tarefa(23)", li);
+    printf("remove_tarefa(99)=%d\n", remove_tarefa(li, 99));
 
-    libera_lista(li);                                /* trace A */
+    libera_lista(li);
 
     li = cria_lista();
-    insere_lista_ordenada(li, mk(23, "Ana"));
-    insere_lista_ordenada(li, mk(16, "Bruno"));
-    imprime("ordenada", li);
-    insere_lista_ordenada(li, mk(19, "Carla"));      /* trace D */
-    imprime("insere_ordenada(19)", li);
-    insere_lista_ordenada(li, mk(12, "Diego"));
-    insere_lista_ordenada(li, mk(40, "Elisa"));
-    imprime("insere 12 e 40", li);
+    insere_tarefa_ordenada(li, mk(23, "Comprar leite", 3));
+    insere_tarefa_ordenada(li, mk(16, "Lavar roupa", 1));
+    insere_tarefa_ordenada(li, mk(19, "Comprar", 2));
+    insere_tarefa_ordenada(li, mk(12, "Estudar", 1));
+    insere_tarefa_ordenada(li, mk(40, "Dormir", 4));
+    imprime("ordenada por prioridade", li);
 
-    if (busca_lista_pos(li, 3, &al))
-        printf("busca_pos(3) -> matricula %d\n", al.matricula);
-    if (busca_lista_mat(li, 19, &al))
-        printf("busca_mat(19) -> %s\n", al.nome);
-    printf("busca_mat(99)=%d\n", busca_lista_mat(li, 99, &al));
+    if (busca_tarefa_pos(li, 3, &t))
+        printf("busca_pos(3) -> codigo %d\n", t.codigo);
+    if (busca_tarefa_cod(li, 19, &t))
+        printf("busca_cod(19) -> %s\n", t.descricao);
+    printf("busca_cod(99)=%d\n", busca_tarefa_cod(li, 99, &t));
 
     libera_lista(li);
     return 0;
