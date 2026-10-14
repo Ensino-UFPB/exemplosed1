@@ -68,36 +68,6 @@ valgrind --leak-check=full ./teste
 O código compila sem nenhum aviso com `-Wall -Wextra` e o `valgrind` não acusa vazamento
 nem erro de acesso.
 
-## O que o `main.c` demonstra
-
-O programa reproduz, na ordem, os oito traces da aula, imprimindo o estado da lista antes
-e depois de cada operação:
-
-| Trecho | Conteúdo |
-|---|---|
-| Criação e inserção em lista vazia | o nó aponta para si mesmo |
-| Traces 1 e 2 | `libera_lista` e `tamanho_lista` sobre `[33, 23]` |
-| Traces 3 e 4 | `insere_lista_inicio(12)` e `insere_lista_final(12)` sobre `[33, 23, 16]` |
-| Trace 5 | `insere_lista_ordenada` nos três pontos possíveis |
-| Traces 6 e 7 | `remove_lista_inicio` e `remove_lista_final` sobre `[16, 12, 23]` |
-| Trace 8 | `remove_lista` do meio, do início e do elemento único |
-| Buscas | por posição e por conteúdo, com os casos de falha |
-| Duas voltas | evidencia que o percurso não tem fim natural |
-
-## Para resolver a lista de exercícios
-
-As funções pedidas na lista de exercícios da Aula 07 devem ser escritas **dentro de
-`ListaDinEncadCirc.c`**, com o protótipo declarado em `ListaDinEncadCirc.h`.
-
-O motivo é o tipo opaco: `struct elemento` e o apelido `Elem` existem apenas dentro do
-`.c`. Uma função escrita no `main.c` não consegue acessar os campos `dados` e `prox`, e o
-compilador acusa tipo incompleto. Quem **usa** a biblioteca enxerga apenas `Lista*` e os
-protótipos do `.h`; quem a **estende** trabalha por dentro.
-
-O `main.c` desta pasta é um exemplo do primeiro caso: em nenhum momento ele toca em um
-campo de nó. Até a função `imprime` é construída apenas com `tamanho_lista` e
-`busca_lista_pos`.
-
 ## Convenções
 
 - `struct aluno` com matrícula, nome e três notas, como nos slides e no livro.
