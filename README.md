@@ -13,8 +13,9 @@ Prof. Daniel Faustino Lacerda de Souza · danielfaustino@ci.ufpb.br
 
 | Pasta | Aula | Estrutura | Situação |
 |---|---|---|---|
-| [`05-lista-sequencial-estatica`](05-lista-sequencial-estatica) | 05 | Lista sequencial estática (array e campo `qtd`) | disponível |
-| `06-lista-dinamica-encadeada` | 06 | Lista dinâmica encadeada | em preparação |
+| [`01-lista-sequencial-estatica`](01-lista-sequencial-estatica) | 05 | Lista sequencial estática (vetor e campo `qtd`) | disponível |
+| [`02-lista-encadeadas-dinamicas`](02-lista-encadeadas-dinamicas) | 06 | Lista dinâmica encadeada | disponível |
+| [`03-lista-dinamica-encadeada-circular`](03-lista-dinamica-encadeada-circular) | 07 | Lista dinâmica encadeada circular | disponível |
 
 As demais estruturas do semestre (pilhas, filas, árvores de busca, árvores balanceadas,
 heaps, filas de prioridade e grafos) serão publicadas conforme as aulas forem ministradas.
@@ -24,7 +25,7 @@ heaps, filas de prioridade e grafos) serão publicadas conforme as aulas forem m
 Cada pasta é independente e traz o seu próprio `Makefile`:
 
 ```bash
-cd 05-lista-sequencial-estatica
+cd 01-lista-sequencial-estatica
 make        # gera o executável ./teste
 ./teste     # executa o programa de demonstração
 make clean  # remove os .o e o executável
