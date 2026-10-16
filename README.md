@@ -16,6 +16,7 @@ Prof. Daniel Faustino Lacerda de Souza · danielfaustino@ci.ufpb.br
 | [`01-lista-sequencial-estatica`](01-lista-sequencial-estatica) | 05 | Lista sequencial estática (vetor e campo `qtd`) | disponível |
 | [`02-lista-encadeadas-dinamicas`](02-lista-encadeadas-dinamicas) | 06 | Lista dinâmica encadeada | disponível |
 | [`03-lista-dinamica-encadeada-circular`](03-lista-dinamica-encadeada-circular) | 07 | Lista dinâmica encadeada circular | disponível |
+| [`04-lista-dinamica-duplamente-encadeada`](04-lista-dinamica-duplamente-encadeada) | 08 | Lista dinâmica duplamente encadeada | disponível |
 
 As demais estruturas do semestre (pilhas, filas, árvores de busca, árvores balanceadas,
 heaps, filas de prioridade e grafos) serão publicadas conforme as aulas forem ministradas.
