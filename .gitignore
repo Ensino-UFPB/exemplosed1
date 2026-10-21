@@ -1,0 +1,7 @@
+# Objetos e binarios C
+*.o
+*.a
+*.so
+*.out
+*.exe
+teste
