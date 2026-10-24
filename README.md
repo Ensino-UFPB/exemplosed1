@@ -18,9 +18,10 @@ Prof. Daniel Faustino Lacerda de Souza · danielfaustino@ci.ufpb.br
 | [`03-lista-dinamica-encadeada-circular`](03-lista-dinamica-encadeada-circular) | 07 | Lista dinâmica encadeada circular | disponível |
 | [`04-lista-dinamica-duplamente-encadeada`](04-lista-dinamica-duplamente-encadeada) | 08 | Lista dinâmica duplamente encadeada | disponível |
 | [`05-fila-sequencial-estatica`](05-fila-sequencial-estatica) | 09 | Fila sequencial estática (vetor circular, capacidade definida na criação) | disponível |
+| [`06-fila-prioridade`](06-fila-prioridade) | 10 | Fila de prioridade sobre vetor ordenado (capacidade definida na criação) | disponível |
 
 As demais estruturas do semestre (pilhas, árvores de busca, árvores balanceadas,
-heaps, filas de prioridade e grafos) serão publicadas conforme as aulas forem ministradas.
+heaps e grafos) serão publicadas conforme as aulas forem ministradas.
 
 ## Como compilar e executar
 
