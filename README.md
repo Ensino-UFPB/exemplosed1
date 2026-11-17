@@ -20,9 +20,10 @@ Prof. Daniel Faustino Lacerda de Souza · danielfaustino@ci.ufpb.br
 | [`05-fila-sequencial-estatica`](05-fila-sequencial-estatica) | 09 | Fila sequencial estática (vetor circular, capacidade definida na criação) | disponível |
 | [`06-fila-prioridade`](06-fila-prioridade) | 10 | Fila de prioridade sobre vetor ordenado (capacidade definida na criação) | disponível |
 | [`07-pilha-sequencial-estatica`](07-pilha-sequencial-estatica) | 11 | Pilha sequencial estática (topo em `dados[qtd - 1]`, capacidade definida na criação) | disponível |
+| [`08-grafo-lista-adjacencia`](08-grafo-lista-adjacencia) | 12 | Grafo por lista de adjacência em vetores (linhas de `grau_max` posições, grafo ou dígrafo, com ou sem pesos) | disponível |
 
-As demais estruturas do semestre (árvores de busca, árvores balanceadas,
-heaps e grafos) serão publicadas conforme as aulas forem ministradas.
+As demais estruturas do semestre (buscas em grafos, caminhos mínimos, árvores de busca,
+árvores balanceadas e heaps) serão publicadas conforme as aulas forem ministradas.
 
 ## Como compilar e executar
 
