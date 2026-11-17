@@ -1,4 +1,4 @@
-# Aula 11 · Pilha sequencial estática com capacidade definida na criação
+# Aula 10 · Pilha sequencial estática com capacidade definida na criação
 
 Implementação de uma pilha (estrutura LIFO: o último a entrar é o primeiro a sair) com
 **acesso sequencial** sobre um vetor. A inserção, a remoção e a consulta acontecem sempre
@@ -12,7 +12,7 @@ de exercícios.
 
 ## O que muda em relação ao livro
 
-Como nas filas das aulas 09 e 10, o vetor não tem tamanho `MAX` fixo. Quem cria a pilha
+Como na fila sequencial da Aula 09, o vetor não tem tamanho `MAX` fixo. Quem cria a pilha
 escolhe a capacidade:
 
 ```c
@@ -27,7 +27,7 @@ struct pilha {
 };
 ```
 
-Depois de criada, a capacidade não muda e a pilha pode ficar cheia. Como nas filas, a
+Depois de criada, a capacidade não muda e a pilha pode ficar cheia. Como na fila, a
 criação faz duas alocações (a estrutura e o vetor, liberando a estrutura se a segunda
 falhar) e `libera_Pilha` faz dois `free`, o vetor antes da estrutura.
 

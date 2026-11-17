@@ -1,4 +1,4 @@
-# Aula 10 · Fila de prioridade sobre vetor ordenado
+# Aula 11 · Fila de prioridade sobre vetor ordenado
 
 Implementação de uma fila de prioridade: cada elemento tem um dado extra, a **prioridade**,
 que determina a sua posição na fila e quem é o próximo a sair. A remoção e a consulta
@@ -13,7 +13,7 @@ seções 7.1 a 7.7. A implementação com heap binária (seção 7.8) fica para 
 
 ## O que muda em relação ao livro
 
-Como na fila sequencial da Aula 09, o vetor não tem tamanho `MAX` fixo. Quem cria a fila
+Como na fila sequencial da Aula 09 e na pilha da Aula 10, o vetor não tem tamanho `MAX` fixo. Quem cria a fila
 escolhe a capacidade:
 
 ```c

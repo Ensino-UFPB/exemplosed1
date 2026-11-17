@@ -1,6 +1,6 @@
 /* ============================================================
    PilhaSequencial.h
-   Estrutura de Dados I - UFPB - Aula 11
+   Estrutura de Dados I - UFPB - Aula 10
    Pilha sequencial estatica com capacidade definida na criacao
 
    Referencia: BACKES, A. R. Algoritmos e Estruturas de Dados em

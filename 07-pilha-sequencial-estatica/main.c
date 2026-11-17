@@ -1,4 +1,4 @@
-/* Programa de teste da biblioteca: reproduz o trace geral da Aula 11
+/* Programa de teste da biblioteca: reproduz o trace geral da Aula 10
    (pilha com capacidade 4, incluindo pilha cheia e pilha vazia). */
 #include <stdio.h>
 #include <string.h>

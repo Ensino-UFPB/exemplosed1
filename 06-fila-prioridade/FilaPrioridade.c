@@ -1,6 +1,6 @@
 /* ============================================================
    FilaPrioridade.c
-   Estrutura de Dados I - UFPB - Aula 10
+   Estrutura de Dados I - UFPB - Aula 11
    Implementacao da fila de prioridade sobre vetor ordenado,
    com capacidade definida na criacao.
 

@@ -1,4 +1,4 @@
-/* Programa de teste da biblioteca: reproduz os traces da Aula 10
+/* Programa de teste da biblioteca: reproduz os traces da Aula 11
    (pronto-socorro com capacidade 5, empates de prioridade, fila
    cheia e fila vazia). Quanto maior o numero, maior a prioridade. */
 #include <stdio.h>

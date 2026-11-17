@@ -1,6 +1,6 @@
 /* ============================================================
    PilhaSequencial.c
-   Estrutura de Dados I - UFPB - Aula 11
+   Estrutura de Dados I - UFPB - Aula 10
    Implementacao da pilha sequencial estatica com capacidade
    definida na criacao.
 
